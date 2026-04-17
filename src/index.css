@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+
+@layer base{
+  html{
+    scroll-behavior: smooth;
+  }
+  body{
+    font-family: 'Inter','Segoe UI','Roboto','Oxygen','Ubuntu';
+    line-height: 1.6;
+    background-color: #0f172a;
+  }
+}
