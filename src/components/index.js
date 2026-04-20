@@ -5,5 +5,7 @@ import Skills from "./skills/Skills";
 import Projects from "./projects/Projects";
 import Contact from "./contact/Contact";
 import Footer from "./footer/Footer";
+import Certificate from "./certificate/Certificate";
 
-export {Header,Hero,About,Skills,Projects,Contact,Footer};
+
+export {Header,Hero,About,Skills,Projects,Contact,Footer,Certificate};

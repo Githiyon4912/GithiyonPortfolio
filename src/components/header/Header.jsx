@@ -41,10 +41,10 @@ function Header() {
       name: "Projects",
       href: "#projects",
     },
-    // {
-    //   name: "Experience",
-    //   href: "#experience",
-    // },
+    {
+      name: "Certificate",
+      href: "#certificate",
+    },
     {
       name: "Contact",
       href: "#contact",

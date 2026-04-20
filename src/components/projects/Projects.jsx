@@ -33,6 +33,7 @@ function Projects() {
       image: movieApp,
       technologies: ["React", "Tailwindcss", "React router", "Lucide icon"],
       category: "Frontend",
+      github: "https://github.com/GITHIYON49/MovieAppTask",
       feature: true,
     },
     {
@@ -49,6 +50,7 @@ function Projects() {
         "Redux",
       ],
       category: "Frontend",
+      github: "https://github.com/GITHIYON49/InvoiceGeneratorProject",
       feature: true,
     },
     {
@@ -65,6 +67,7 @@ function Projects() {
         "Express js",
       ],
       category: "full-stack",
+      github: "https://github.com/GITHIYON49/taskmanagementapp",
       feature: true,
     },
   ];
@@ -115,12 +118,20 @@ function Projects() {
                       className="w-full h-full object-cover group-hover:scale-105 transition-all duration-300"
                     />
                     <div className="absolute top-3 right-3 flex items-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                      <span className="w-8 h-8 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center transition-all duration-300 cursor-pointer">
+                      {/* <span className="w-8 h-8 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center transition-all duration-300 cursor-pointer">
                         <i className="fa-brands fa-github text-gray-700 text-lg"></i>
-                      </span>
-                      <span className="w-8 h-8 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center transition-all duration-300 cursor-pointer">
+                      </span> */}
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-8 h-8 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center transition-all duration-300 cursor-pointer"
+                      >
+                        <i className="fa-brands fa-github text-gray-700 text-lg"></i>
+                      </a>
+                      {/* <span className="w-8 h-8 rounded-full bg-white/90 group-hover:bg-white flex items-center justify-center transition-all duration-300 cursor-pointer">
                         <SquareArrowOutUpRight className="size-4 text-gray-700 text-xl" />
-                      </span>
+                      </span> */}
                     </div>
                   </div>
 
