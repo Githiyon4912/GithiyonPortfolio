@@ -39,7 +39,7 @@ function Contact() {
     setStatus("sending");
 
     try {
-      const res = await fetch("https://email-node-js-beta.vercel.app/", {
+      const res = await fetch("https://email-node-js-beta.vercel.app/send-mail", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
