@@ -49,7 +49,14 @@ function Hero() {
                 <div
                   className={`flex items-center gap-4 pt-4 transition-all duration-1000 delay-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
                 >
-                  <button className="px-8 py-4 bg-green-600 text-white text-base rounded-lg flex items-center justify-center gap-2 uppercase cursor-pointer transition-all duration-300 hover:bg-green-700 hover:scale-105 group">
+                  <button
+                    onClick={() =>
+                      document
+                        .querySelector("#about")
+                        .scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="px-8 py-4 bg-green-600 text-white text-base rounded-lg flex items-center justify-center gap-2 uppercase cursor-pointer transition-all duration-300 hover:bg-green-700 hover:scale-105 group"
+                  >
                     learn more{" "}
                     <MoveRight className="size-5 group-hover:translate-x-1 transition-transform " />
                   </button>
@@ -62,19 +69,25 @@ function Hero() {
                   className={`flex items-center gap-4 pt-6 transition-all duration-1000 delay-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}
                 >
                   <a
-                    href="#"
+                    href="https://linkedin.com/in/githiyon-m"
+                    target="_blank"
+                    rel="noreferrer"
                     className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center hover:bg-green-400 hover:scale-105 hover:rotate-6 transition-all duration-300 group"
                   >
                     <i className="fa-brands fa-linkedin-in group-hover:text-white"></i>
                   </a>
                   <a
-                    href="#"
+                    href="https://github.com/GITHIYON49"
+                    target="_blank"
+                    rel="noreferrer"
                     className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center hover:bg-green-400 hover:scale-105 hover:rotate-6 transition-all duration-300 group"
                   >
                     <i className="fa-brands fa-github group-hover:text-white"></i>
                   </a>
                   <a
-                    href="#"
+                    href="mailto:githiyonm4912@gmail.com"
+                    target="_blank"
+                    rel="noreferrer"
                     className="w-12 h-12 rounded-lg bg-gray-700 flex items-center justify-center hover:bg-green-400 hover:scale-105 hover:rotate-6 transition-all duration-300 group"
                   >
                     <i className="fa-regular fa-envelope group-hover:text-white"></i>

@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { githiyon } from "../../assets/images";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import ResumePDF from "../resumePdf/ResumePDF";
 
 function About() {
   const [isVisible, setIsVisible] = useState(false);
@@ -88,7 +90,6 @@ function About() {
                     design, secure authentication systems, and responsive user
                     interfaces.
                   </p>
-                  
                 </div>
                 <div
                   className={`grid grid-cols-2 gap-8 py-4 transition-all duration-1000 delay-500 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10 "}`}
@@ -124,10 +125,17 @@ function About() {
                 <div
                   className={`flex flex-wrap gap-8 transition-all duration-1000 delay-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10 "}`}
                 >
-                  <button className="px-8 py-3 rounded-lg text-white uppercase cursor-pointer bg-green-600 shadow-lg hover:shadow-xl hover:bg-green-700 hover:scale-110 transition-all duration-300">
-                    Download cv
-                  </button>
-                  <button className="px-8 py-3 rounded-lg text-gray-300 uppercase cursor-pointer border-2 border-slate-700 shadow-lg hover:shadow-xl hover:border-green-400 hover:text-green-400 hover:scale-110 transition-all duration-300">
+                  <PDFDownloadLink
+                    document={<ResumePDF />}
+                    fileName="Githiyon_M_Resume.pdf"
+                  >
+                    {({ loading }) => (
+                      <button className="px-8 py-3 rounded-lg text-white uppercase cursor-pointer bg-green-600 shadow-lg hover:shadow-xl hover:bg-green-700 hover:scale-110 transition-all duration-300">
+                        {loading ? "Preparing..." : "Download cv"}
+                      </button>
+                    )}
+                  </PDFDownloadLink>
+                  <button onClick={() => document.querySelector("#skills").scrollIntoView({ behavior: "smooth" })} className="px-8 py-3 rounded-lg text-gray-300 uppercase cursor-pointer border-2 border-slate-700 shadow-lg hover:shadow-xl hover:border-green-400 hover:text-green-400 hover:scale-110 transition-all duration-300">
                     learn more
                   </button>
                 </div>

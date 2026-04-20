@@ -1,5 +1,7 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import ResumePDF from "../resumePdf/ResumePDF";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -75,9 +77,16 @@ function Header() {
                 );
               })}
             </ul>
-            <button className="hidden tracking-wider md:flex gap-2 text-sm lg:text-base font-medium text-white bg-green-600 px-5 lg:px-6 py-2.5 rounded-lg shadow-lg capitalize hover:shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer">
-              Download cv now
-            </button>
+            <PDFDownloadLink
+              document={<ResumePDF />}
+              fileName="Githiyon_M_Resume.pdf"
+            >
+              {({ loading }) => (
+                <button className="hidden tracking-wider md:flex gap-2 text-sm lg:text-base font-medium text-white bg-green-600 px-5 lg:px-6 py-2.5 rounded-lg shadow-lg capitalize hover:shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer">
+                  {loading ? "Preparing..." : "Download cv now"}
+                </button>
+              )}
+            </PDFDownloadLink>
             <button
               className="md:hidden text-white cursor-pointer transition-all duration-300"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -104,9 +113,16 @@ function Header() {
                   );
                 })}
               </ul>
-              <button className="text-sm mt-4 w-full bg-green-600 py-2.5 text-white rounded-lg transition-all duration-300 hover:bg-green-700">
-                Download cv now
-              </button>
+              <PDFDownloadLink
+                document={<ResumePDF />}
+                fileName="Githiyon_M_Resume.pdf"
+              >
+                {({ loading }) => (
+                  <button className="text-sm mt-4 w-full bg-green-600 py-2.5 text-white rounded-lg transition-all duration-300 hover:bg-green-700">
+                    {loading ? "Preparing..." : "Download cv now"}
+                  </button>
+                )}
+              </PDFDownloadLink>
             </div>
           )}
         </nav>
