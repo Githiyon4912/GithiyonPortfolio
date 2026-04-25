@@ -170,7 +170,7 @@ function ResumePDF() {
             </Text>
             <Text style={styles.headerContactItem}>9003255653 |</Text>
             <Text style={styles.headerContactItem}>
-              No:26, Thomyar street, kamarajapuram, chennai-600070
+              No:26, Thomayar street, kamarajapuram, chennai-600070
             </Text>
           </View>
           <View style={[styles.headerContactRow, { marginTop: 4 }]}>
