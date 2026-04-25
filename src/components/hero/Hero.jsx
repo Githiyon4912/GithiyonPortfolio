@@ -60,10 +60,10 @@ function Hero() {
                     learn more{" "}
                     <MoveRight className="size-5 group-hover:translate-x-1 transition-transform " />
                   </button>
-                  <button className="px-8 py-4 text-white border-2 border-gray-700 rounded-lg flex items-center justify-center gap-2 uppercase cursor-pointer transition-all duration-300 hover:border-green-600 hover:text-green-400 hover:scale-105 group">
+                  {/* <button className="px-8 py-4 text-white border-2 border-gray-700 rounded-lg flex items-center justify-center gap-2 uppercase cursor-pointer transition-all duration-300 hover:border-green-600 hover:text-green-400 hover:scale-105 group">
                     <Play className="size-5 group-hover:translate-x-1 transition-transform " />{" "}
                     play video
-                  </button>
+                  </button> */}
                 </div>
                 <div
                   className={`flex items-center gap-4 pt-6 transition-all duration-1000 delay-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}

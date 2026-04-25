@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import { githiyon } from "../../assets/images";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import ResumePDF from "../resumePdf/ResumePDF";
+import ResumePreviewModal from "../resumePreviewModal/ResumePreviewModal";
 
 function About() {
   const [isVisible, setIsVisible] = useState(false);
+  const [showResume, setShowResume] = useState(false);
+
+   useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "Escape") setShowResume(false);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, []);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -125,7 +133,7 @@ function About() {
                 <div
                   className={`flex flex-wrap gap-8 transition-all duration-1000 delay-1000 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10 "}`}
                 >
-                  <PDFDownloadLink
+                  {/* <PDFDownloadLink
                     document={<ResumePDF />}
                     fileName="Githiyon_M_Resume.pdf"
                   >
@@ -134,8 +142,21 @@ function About() {
                         {loading ? "Preparing..." : "Download cv"}
                       </button>
                     )}
-                  </PDFDownloadLink>
-                  <button onClick={() => document.querySelector("#skills").scrollIntoView({ behavior: "smooth" })} className="px-8 py-3 rounded-lg text-gray-300 uppercase cursor-pointer border-2 border-slate-700 shadow-lg hover:shadow-xl hover:border-green-400 hover:text-green-400 hover:scale-110 transition-all duration-300">
+                  </PDFDownloadLink> */}
+                  <button
+                    onClick={() => setShowResume(true)}
+                    className="hidden tracking-wider md:flex gap-2 text-sm lg:text-base font-medium text-white bg-green-600 px-5 lg:px-6 py-2.5 rounded-lg shadow-lg capitalize hover:shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer"
+                  >
+                    Download CV
+                  </button>
+                  <button
+                    onClick={() =>
+                      document
+                        .querySelector("#skills")
+                        .scrollIntoView({ behavior: "smooth" })
+                    }
+                    className="px-8 py-3 rounded-lg text-gray-300 uppercase cursor-pointer border-2 border-slate-700 shadow-lg hover:shadow-xl hover:border-green-400 hover:text-green-400 hover:scale-110 transition-all duration-300"
+                  >
                     learn more
                   </button>
                 </div>
@@ -144,6 +165,9 @@ function About() {
           </div>
         </div>
       </section>
+      {showResume && (
+        <ResumePreviewModal onClose={() => setShowResume(false)} />
+      )}
     </>
   );
 }

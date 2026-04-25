@@ -1,86 +1,76 @@
 import {
-  Document, Page, Text, View, StyleSheet, Link
+  Document,
+  Page,
+  Text,
+  View,
+  StyleSheet,
+  Link,
 } from "@react-pdf/renderer";
 
 const styles = StyleSheet.create({
   page: {
-    paddingVertical: 40,
-    paddingHorizontal: 50,
+    paddingVertical: 0,
+    paddingHorizontal: 0,
     fontFamily: "Helvetica",
     fontSize: 10,
     color: "#222",
     backgroundColor: "#fff",
   },
-  name: {
-    fontSize: 26,
+
+  header: {
+    padding: "30 20",
+    marginBottom: 0,
+  },
+  headerName: {
+    fontSize: 24,
     fontFamily: "Helvetica-Bold",
-    marginBottom: 2,
+    color: "#1a365d",
+    marginBottom: 4,
   },
-  role: {
-    fontSize: 10,
-    letterSpacing: 1.5,
-    color: "#555",
-    marginBottom: 6,
+  headerRole: {
+    fontSize: 11,
+    color: "#426a92",
+    letterSpacing: 1,
+    marginBottom: 12,
   },
-  contactRow: {
+  headerContactRow: {
     flexDirection: "row",
     flexWrap: "wrap",
     gap: 4,
-    marginBottom: 2,
     fontSize: 9,
-    color: "#444",
+    color: "#7c7c84",
   },
-  contactItem: {
-    marginRight: 8,
-    color: "#444",
+  headerContactItem: {
+    color: "#7c7c84",
+    marginRight: 10,
+  },
+
+  body: {
+    paddingHorizontal: 40,
+    paddingVertical: 20,
+  },
+
+  sectionTitle: {
+    fontSize: 10,
+    fontFamily: "Helvetica-Bold",
+    letterSpacing: 1.5,
+    color: "#1a365d",
+    marginTop: 16,
+    marginBottom: 4,
+    textTransform: "uppercase",
   },
   divider: {
     borderBottomWidth: 1,
-    borderBottomColor: "#ccc",
-    marginVertical: 8,
+    borderBottomColor: "#e2e8f0",
+    marginBottom: 8,
   },
-  sectionTitle: {
-    fontSize: 9,
-    fontFamily: "Helvetica-Bold",
-    letterSpacing: 2,
-    color: "#333",
-    marginBottom: 6,
-    marginTop: 10,
-  },
+
   summaryText: {
     fontSize: 10,
-    color: "#333",
+    color: "#444",
     lineHeight: 1.6,
   },
-  jobTitle: {
-    fontSize: 11,
-    fontFamily: "Helvetica-Bold",
-    marginBottom: 1,
-  },
-  jobRow: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    marginBottom: 2,
-  },
-  jobMeta: {
-    fontSize: 9,
-    color: "#555",
-  },
-  bullet: {
-    flexDirection: "row",
-    marginBottom: 4,
-    paddingLeft: 8,
-  },
-  bulletDot: {
-    marginRight: 5,
-    fontSize: 10,
-  },
-  bulletText: {
-    fontSize: 10,
-    color: "#333",
-    lineHeight: 1.5,
-    flex: 1,
-  },
+
   skillsRow: {
     flexDirection: "row",
     flexWrap: "wrap",
@@ -88,18 +78,82 @@ const styles = StyleSheet.create({
     marginTop: 4,
   },
   skillBadge: {
-    border: "1pt solid #bbb",
-    borderRadius: 3,
-    paddingHorizontal: 8,
-    paddingVertical: 3,
     fontSize: 9,
-    color: "#333",
+    color: "#7c7c84",
   },
-  link: {
+
+  rowBetween: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-start",
+    marginBottom: 2,
+  },
+  jobTitle: {
+    fontSize: 11,
+    fontFamily: "Helvetica-Bold",
+    color: "#1a365d",
+  },
+  jobDate: {
     fontSize: 9,
+    color: "#64748b",
+  },
+  jobCompany: {
+    fontSize: 10,
+    color: "#426a92",
+    fontFamily: "Helvetica-Bold",
+    marginBottom: 1,
+  },
+  jobLocation: {
+    fontSize: 9,
+    color: "#64748b",
+    marginBottom: 5,
+  },
+
+  bullet: {
+    flexDirection: "row",
+    marginBottom: 4,
+    paddingLeft: 4,
+  },
+  bulletDot: {
+    marginRight: 5,
+    fontSize: 10,
+    color: "#426a92",
+  },
+  bulletText: {
+    fontSize: 10,
     color: "#444",
-    textDecoration: "none",
-    marginBottom: 3,
+    lineHeight: 1.5,
+    flex: 1,
+  },
+
+  projectTitle: {
+    fontSize: 11,
+    fontFamily: "Helvetica-Bold",
+    color: "#1a365d",
+  },
+  projectDate: {
+    fontSize: 9,
+    color: "#64748b",
+  },
+
+  certTitle: {
+    fontSize: 11,
+    fontFamily: "Helvetica-Bold",
+    color: "#1a365d",
+    marginBottom: 1,
+  },
+  certIssuer: {
+    fontSize: 9,
+    color: "#64748b",
+  },
+  langRow: {
+    flexDirection: "row",
+    gap: 8,
+    marginTop: 4,
+  },
+  langBadge: {
+    fontSize: 9,
+    color: "#7c7c84",
   },
 });
 
@@ -107,121 +161,147 @@ function ResumePDF() {
   return (
     <Document>
       <Page size="A4" style={styles.page}>
-        {/* Header */}
-        <Text style={styles.name}>Githiyon M</Text>
-        <Text style={styles.role}>FRONTEND DEVELOPER</Text>
-        <View style={styles.contactRow}>
-          <Text style={styles.contactItem}>githiyonm4912@gmail.com  ·</Text>
-          <Text style={styles.contactItem}>+91 9003255653  ·</Text>
-          <Text style={styles.contactItem}>chennai, india  ·</Text>
-          <Link src="https://githiyonm.netlify.app/" style={styles.contactItem}>
-            https://githiyonm.netlify.app/  ·
-          </Link>
+        <View style={styles.header}>
+          <Text style={styles.headerName}>GITHIYON M</Text>
+          <Text style={styles.headerRole}>Frontend Developer</Text>
+          <View style={styles.headerContactRow}>
+            <Text style={styles.headerContactItem}>
+              githiyonm4912@gmail.com |
+            </Text>
+            <Text style={styles.headerContactItem}>9003255653 |</Text>
+            <Text style={styles.headerContactItem}>
+              No:26, Thomyar street, kamarajapuram, chennai-600070
+            </Text>
+          </View>
+          <View style={[styles.headerContactRow, { marginTop: 4 }]}>
+            <Link
+              src="https://linkedin.com/in/githiyon-m"
+              style={[styles.headerContactItem, { color: "#7c7c84" }]}
+            >
+              linkedin.com/in/githiyon-m
+            </Link>
+            <Text style={styles.headerContactItem}> | </Text>
+            <Link
+              src="https://github.com/GITHIYON49"
+              style={[styles.headerContactItem, { color: "#7c7c84" }]}
+            >
+              github.com/GITHIYON49
+            </Link>
+            <Text style={styles.headerContactItem}> | </Text>
+            <Link
+              src="https://githiyonm.netlify.app/"
+              style={[styles.headerContactItem, { color: "#7c7c84" }]}
+            >
+              githiyonm.netlify.app
+            </Link>
+          </View>
         </View>
-        <View style={styles.contactRow}>
-          <Link src="https://linkedin.com/in/githiyon-m" style={styles.contactItem}>
-            linkedin.com/in/githiyon-m
-          </Link>
-        </View>
-
         <View style={styles.divider} />
 
-        {/* Summary */}
-        <Text style={styles.sectionTitle}>SUMMARY</Text>
-        <View style={styles.divider} />
-        <Text style={styles.summaryText}>
-          Full Stack Developer with 10 months of professional front-end development experience in a startup
-          environment, specialized in building dynamic, user-centric web applications.
-        </Text>
+        <View style={styles.body}>
+          <Text style={styles.sectionTitle}>Professional Summary</Text>
+          <View style={styles.divider} />
+          <Text style={styles.summaryText}>
+            Full Stack Developer with 10 months of hands on frontend experience
+            in a startup environment and a completed fullstack development
+            course, specializing in building dynamic web applications using
+            React.js, JavaScript, HTML5, CSS3, and Tailwind CSS.
+          </Text>
 
-        {/* Experience */}
-        <Text style={styles.sectionTitle}>EXPERIENCE</Text>
-        <View style={styles.divider} />
-        <View style={styles.jobRow}>
-          <Text style={styles.jobTitle}>Frontend Developer</Text>
-          <Text style={styles.jobMeta}>Dec 2024 — Oct 2025</Text>
-        </View>
-        <Text style={styles.jobMeta}>Digital Pebbles · Pozhichalur, Chennai</Text>
-        <View style={{ marginTop: 5 }}>
+          <Text style={styles.sectionTitle}>Skills</Text>
+          <View style={styles.divider} />
+          <View style={styles.skillsRow}>
+            {[
+              "JavaScript",
+              "Html",
+              "Css",
+              "React",
+              "Tailwind CSS",
+              "Redux",
+              "Node.js",
+              "MongoDb",
+            ].map((skill) => (
+              <Text key={skill} style={styles.skillBadge}>
+                {skill}
+              </Text>
+            ))}
+          </View>
+
+          <Text style={styles.sectionTitle}>Experience</Text>
+          <View style={styles.divider} />
+          <View style={styles.rowBetween}>
+            <Text style={styles.jobTitle}>Frontend Developer</Text>
+            <Text style={styles.jobDate}>Dec 2024 - Oct 2025</Text>
+          </View>
+          <View style={styles.rowBetween}>
+            <Text style={styles.jobCompany}>Digital Pebbles</Text>
+            <Text style={styles.jobDate}>Pozhichalur, Chennai</Text>
+          </View>
+
           <View style={styles.bullet}>
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
-              Developed a fully responsive product catalog website for a hardware products company using
-              React.js and Tailwind CSS, with a mobile-first design, reusable components, and seamless user
-              experience across all devices.
+              Developed a fully responsive product catalog website for a
+              hardware company using React.js and Tailwind CSS, featuring
+              dynamic routing, reusable components, and interactive product
+              views.
+            </Text>
+          </View>
+
+          <Text style={styles.sectionTitle}>Projects</Text>
+          <View style={styles.divider} />
+          <View style={styles.rowBetween}>
+            <Text style={styles.projectTitle}>Invoice Builder</Text>
+            <Text style={styles.projectDate}>2025-12-10 - 2025-12-30</Text>
+          </View>
+          <View style={[styles.bullet, { marginTop: 4 }]}>
+            <Text style={styles.bulletDot}>•</Text>
+            <Text style={styles.bulletText}>
+              Built a responsive Invoice Builder using React.js and Tailwind CSS
+              with real time calculations for subtotal, tax, and total,
+              delivering a clean and professional UI.
             </Text>
           </View>
           <View style={styles.bullet}>
             <Text style={styles.bulletDot}>•</Text>
             <Text style={styles.bulletText}>
-              Implemented dynamic routing, state management, and component-driven architecture for
-              product listings, filtering, and detailed product views, ensuring smooth navigation and
-              maintainable code efficiency.
+              Implemented client side PDF generation and managed complex state
+              with Redux to ensure seamless data flow and consistent application
+              performance without backend dependency.
             </Text>
           </View>
-        </View>
 
-        {/* Education */}
-        <Text style={styles.sectionTitle}>EDUCATION</Text>
-        <View style={styles.divider} />
-        <View style={styles.jobRow}>
-          <Text style={styles.jobTitle}>BCA Bachelor of Computer Applications</Text>
-          <Text style={styles.jobMeta}>2018 — 2021</Text>
-        </View>
-        <Text style={styles.jobMeta}>Tagore College Of Arts & Science · Chrompet, Chennai</Text>
-
-        {/* Skills */}
-        <Text style={styles.sectionTitle}>SKILLS</Text>
-        <View style={styles.divider} />
-        <View style={styles.skillsRow}>
-          {["Html5", "Css3", "JavaScript", "React", "Tailwind CSS", "Redux", "Node.js", "MongoDb"].map(
-            (skill) => (
-              <Text key={skill} style={styles.skillBadge}>{skill}</Text>
-            )
-          )}
-        </View>
-
-        {/* Projects */}
-        <Text style={styles.sectionTitle}>PROJECTS</Text>
-        <View style={styles.divider} />
-        <Text style={styles.jobTitle}>Invoice Builder</Text>
-        <Link src="https://github.com/GITHIYON49/InvoiceGeneratorProject" style={styles.link}>
-          https://github.com/GITHIYON49/InvoiceGeneratorProject
-        </Link>
-        <View style={{ marginTop: 4 }}>
-          <View style={styles.bullet}>
-            <Text style={styles.bulletDot}>•</Text>
-            <Text style={styles.bulletText}>
-              Built a fully responsive Invoice Builder using React.js and Tailwind CSS, featuring real-time
-              subtotal, tax, and total calculations with a clean, professional UI and client-side PDF generation
-              using react-pdf-renderer and react-pdf-table.
+          <Text style={styles.sectionTitle}>Education</Text>
+          <View style={styles.divider} />
+          <View style={styles.rowBetween}>
+            <Text style={styles.jobTitle}>
+              Bachelor of Computer Applications
             </Text>
+            <Text style={styles.jobDate}>2021</Text>
           </View>
-          <View style={styles.bullet}>
-            <Text style={styles.bulletDot}>•</Text>
-            <Text style={styles.bulletText}>
-              Managed complex application state using Redux to ensure consistent data flow across all
-              components, producing structured, print-ready invoices seamlessly without any backend dependency.
+
+          <View style={styles.rowBetween}>
+            <Text style={styles.jobCompany}>
+              Tagore College Of Arts & Science
             </Text>
+            <Text style={styles.jobDate}>Chrompet, Chennai</Text>
           </View>
-        </View>
+          <Text style={styles.jobLocation}>Computer Science</Text>
 
-        {/* Certifications */}
-        <Text style={styles.sectionTitle}>CERTIFICATIONS</Text>
-        <View style={styles.divider} />
-        <View style={styles.jobRow}>
-          <Text style={styles.jobTitle}>MERN Stack - Full Stack Development Course</Text>
-          <Text style={styles.jobMeta}>Feb 2026</Text>
-        </View>
-        <Text style={styles.jobMeta}>GUVI</Text>
+          <Text style={styles.sectionTitle}>Certifications</Text>
+          <View style={styles.divider} />
+          <Text style={styles.certTitle}>Full Stack Development Course</Text>
+          <Text style={styles.certIssuer}>Guvi HCL</Text>
 
-        {/* Languages */}
-        <Text style={styles.sectionTitle}>LANGUAGES</Text>
-        <View style={styles.divider} />
-        <View style={styles.skillsRow}>
-          {["English", "Tamil — Native"].map((lang) => (
-            <Text key={lang} style={styles.skillBadge}>{lang}</Text>
-          ))}
+          <Text style={styles.sectionTitle}>Languages</Text>
+          <View style={styles.divider} />
+          <View style={styles.langRow}>
+            {["Tamil (Native)", "English"].map((lang) => (
+              <Text key={lang} style={styles.langBadge}>
+                {lang}
+              </Text>
+            ))}
+          </View>
         </View>
       </Page>
     </Document>

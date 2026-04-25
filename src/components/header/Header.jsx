@@ -1,11 +1,11 @@
 import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
-import { PDFDownloadLink } from "@react-pdf/renderer";
-import ResumePDF from "../resumePdf/ResumePDF";
+import ResumePreviewModal from "../resumePreviewModal/ResumePreviewModal";
 
 function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [showResume, setShowResume] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -13,6 +13,14 @@ function Header() {
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (e.key === "Escape") setShowResume(false);
+    };
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
   }, []);
 
   const scrollToSection = (href) => {
@@ -77,7 +85,7 @@ function Header() {
                 );
               })}
             </ul>
-            <PDFDownloadLink
+            {/* <PDFDownloadLink
               document={<ResumePDF />}
               fileName="Githiyon_M_Resume.pdf"
             >
@@ -86,7 +94,13 @@ function Header() {
                   {loading ? "Preparing..." : "Download cv now"}
                 </button>
               )}
-            </PDFDownloadLink>
+            </PDFDownloadLink> */}
+            <button
+              onClick={() => setShowResume(true)}
+              className="hidden tracking-wider md:flex gap-2 text-sm lg:text-base font-medium text-white bg-green-600 px-5 lg:px-6 py-2.5 rounded-lg shadow-lg capitalize hover:shadow-xl hover:scale-110 transition-all duration-300 cursor-pointer"
+            >
+              Download CV
+            </button>
             <button
               className="md:hidden text-white cursor-pointer transition-all duration-300"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -113,7 +127,7 @@ function Header() {
                   );
                 })}
               </ul>
-              <PDFDownloadLink
+              {/* <PDFDownloadLink
                 document={<ResumePDF />}
                 fileName="Githiyon_M_Resume.pdf"
               >
@@ -122,11 +136,23 @@ function Header() {
                     {loading ? "Preparing..." : "Download cv now"}
                   </button>
                 )}
-              </PDFDownloadLink>
+              </PDFDownloadLink> */}
+              <button
+                onClick={() => {
+                  setShowResume(true);
+                  setIsMenuOpen(false);
+                }}
+                className="text-sm mt-4 w-full bg-green-600 py-2.5 text-white rounded-lg transition-all duration-300 hover:bg-green-700"
+              >
+                Download CV
+              </button>
             </div>
           )}
         </nav>
       </header>
+      {showResume && (
+        <ResumePreviewModal onClose={() => setShowResume(false)} />
+      )}
     </>
   );
 }
